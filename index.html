@@ -1,39 +1,84 @@
-<div class="avatar-customization">
-  <h2>Create Your Dancer</h2>
-  <div class="avatar-preview">
-    <img id="skinLayer" src="/assets/skin-medium.png" class="avatar-layer" />
-    <img id="hairLayer" src="/assets/hair-bun.png" class="avatar-layer" />
-    <img id="outfitLayer" src="/assets/outfit-stage.png" class="avatar-layer" />
-    <img id="auraLayer" src="/assets/aura-gold.png" class="avatar-layer aura" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#111111" />
+  <meta name="description" content="SHINE MODE — A rhythm-based dance game by YATPAG" />
+  <title>Shine Mode | YATPAG Game</title>
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+  
+  <!-- Google Fonts (Optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- 🎮 Game Container -->
+  <main id="app">
+    
+    <!-- Avatar Customization Component -->
+    <section class="avatar-customization">
+      <h2>Create Your Dancer</h2>
+      <div class="avatar-preview">
+        <img id="skinLayer" src="/assets/skin-medium.png" class="avatar-layer" />
+        <img id="hairLayer" src="/assets/hair-bun.png" class="avatar-layer" />
+        <img id="outfitLayer" src="/assets/outfit-stage.png" class="avatar-layer" />
+        <img id="auraLayer" src="/assets/aura-gold.png" class="avatar-layer aura" />
+      </div>
+
+      <div class="controls">
+        <label>Skin Tone:</label>
+        <select id="skinSelect">
+          <option value="light">Light</option>
+          <option value="medium" selected>Medium</option>
+          <option value="dark">Dark</option>
+        </select>
+
+        <label>Hair:</label>
+        <select id="hairSelect">
+          <option value="afro">Afro Puff</option>
+          <option value="braids">Braids</option>
+          <option value="bun" selected>Bun</option>
+          <option value="curls">Curls</option>
+        </select>
+
+        <label>Outfit:</label>
+        <select id="outfitSelect">
+          <option value="practice">Practice Fit</option>
+          <option value="stage" selected>Stage Costume</option>
+        </select>
+
+        <label>Aura:</label>
+        <select id="auraSelect">
+          <option value="none">None</option>
+          <option value="pink">Pink Flame</option>
+          <option value="gold" selected>Gold Sparkle</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="performance-mode" id="performance">
+  <h2 class="performance-title">Shine Performance</h2>
+  <div class="stage">
+    <div class="note-track" id="track1"></div>
+    <div class="note-track" id="track2"></div>
+    <div class="note-track" id="track3"></div>
+    <div class="note-track" id="track4"></div>
   </div>
-
-  <div class="controls">
-    <label>Skin Tone:</label>
-    <select id="skinSelect">
-      <option value="light">Light</option>
-      <option value="medium" selected>Medium</option>
-      <option value="dark">Dark</option>
-    </select>
-
-    <label>Hair:</label>
-    <select id="hairSelect">
-      <option value="afro">Afro Puff</option>
-      <option value="braids">Braids</option>
-      <option value="bun" selected>Bun</option>
-      <option value="curls">Curls</option>
-    </select>
-
-    <label>Outfit:</label>
-    <select id="outfitSelect">
-      <option value="practice">Practice Fit</option>
-      <option value="stage" selected>Stage Costume</option>
-    </select>
-
-    <label>Aura:</label>
-    <select id="auraSelect">
-      <option value="none">None</option>
-      <option value="pink">Pink Flame</option>
-      <option value="gold" selected>Gold Sparkle</option>
-    </select>
+  <div class="input-bar">
+    <div class="tap-zone" data-track="1"></div>
+    <div class="tap-zone" data-track="2"></div>
+    <div class="tap-zone" data-track="3"></div>
+    <div class="tap-zone" data-track="4"></div>
   </div>
-</div>
+</section>
+
+
+  </main>
+
+  <!-- Main JS Script -->
+  <script src="js/avatar.js"></script>
+</body>
+</html>
