@@ -128,4 +128,16 @@
   color: #ccc;
 }
 
+#startButton {
+  padding: 12px 20px;
+  font-size: 1rem;
+  background: #00ff90;
+  color: #111;
+  border: none;
+  border-radius: 8px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
 

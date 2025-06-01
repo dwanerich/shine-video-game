@@ -1,3 +1,14 @@
+const chart = [
+  { time: 1000, track: 1 },
+  { time: 1500, track: 3 },
+  { time: 2000, track: 2 },
+  { time: 2600, track: 4 },
+  { time: 3100, track: 1 },
+  { time: 3600, track: 3 },
+  { time: 4100, track: 2 },
+  { time: 4700, track: 4 }
+];
+
 const tracks = [1, 2, 3, 4];
 const stage = document.querySelector('.stage');
 
@@ -70,3 +81,22 @@ document.querySelectorAll('.tap-zone').forEach(zone => {
     }
   });
 });
+
+const startButton = document.getElementById('startButton');
+const audio = document.getElementById('gameTrack');
+
+startButton.addEventListener('click', () => {
+  audio.currentTime = 0;
+  audio.play();
+
+  const startTime = Date.now();
+
+  chart.forEach(note => {
+    setTimeout(() => {
+      spawnNote(note.track);
+    }, note.time);
+  });
+
+  startButton.disabled = true;
+});
+

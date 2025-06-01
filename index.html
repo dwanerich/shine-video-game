@@ -9,9 +9,6 @@
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css" />
-  <script src="js/avatar.js"></script>
-<script src="js/rhythm.js"></script>
-
   
   <!-- Google Fonts (Optional) -->
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700;900&display=swap" rel="stylesheet" />
@@ -77,15 +74,23 @@
     <div class="tap-zone" data-track="4"></div>
   </div>
 
+  <!-- start button -->
+    <button id="startButton">Start Performance</button>
+
+<!-- feedback section -->
   <div class="feedback" id="feedback">Ready?</div>
 <div class="score" id="score">Score: 0</div>
 
 </section>
 
 
-  </main>
 
+</main>
+
+<audio id="gameTrack" src="/assets/track1.mp3" preload="auto"></audio>
   <!-- Main JS Script -->
   <script src="js/avatar.js"></script>
+  <script src="js/rhythm.js"></script>
+
 </body>
 </html>
