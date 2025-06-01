@@ -4,117 +4,103 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#111111" />
-  <meta name="description" content="SHINE MODE — A rhythm-based dance game by YATPAG" />
   <title>Shine Mode | YATPAG Game</title>
 
-  <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css" />
-  
-  <!-- Google Fonts (Optional) -->
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700;900&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- 🎮 Game Container -->
-  <main id="app">
-    
-    <!-- Avatar Customization Component -->
-    <section class="avatar-customization">
-      <h2>Create Your Dancer</h2>
-      <div class="avatar-preview">
-        <img id="skinLayer" src="/assets/skin-medium.png" class="avatar-layer" />
-        <img id="hairLayer" src="/assets/hair-bun.png" class="avatar-layer" />
-        <img id="outfitLayer" src="/assets/outfit-stage.png" class="avatar-layer" />
-        <img id="auraLayer" src="/assets/aura-gold.png" class="avatar-layer aura" />
+  <!-- 🎨 AVATAR CUSTOMIZATION -->
+  <section class="avatar-customization">
+    <h2>Create Your Dancer</h2>
+    <div class="avatar-preview">
+      <img id="skinLayer" src="/assets/skin-medium.png" class="avatar-layer" />
+      <img id="hairLayer" src="/assets/hair-bun.png" class="avatar-layer" />
+      <img id="outfitLayer" src="/assets/outfit-stage.png" class="avatar-layer" />
+      <img id="auraLayer" src="/assets/aura-gold.png" class="avatar-layer aura" />
+    </div>
+
+    <div class="controls">
+      <label>Skin Tone:</label>
+      <select id="skinSelect">
+        <option value="light">Light</option>
+        <option value="medium" selected>Medium</option>
+        <option value="dark">Dark</option>
+      </select>
+
+      <label>Hair:</label>
+      <select id="hairSelect">
+        <option value="afro">Afro Puff</option>
+        <option value="braids">Braids</option>
+        <option value="bun" selected>Bun</option>
+        <option value="curls">Curls</option>
+      </select>
+
+      <label>Outfit:</label>
+      <select id="outfitSelect">
+        <option value="practice">Practice Fit</option>
+        <option value="stage" selected>Stage Costume</option>
+      </select>
+
+      <label>Aura:</label>
+      <select id="auraSelect">
+        <option value="none">None</option>
+        <option value="gold" selected>Gold Sparkle</option>
+        <!-- Pink aura added via JS if unlocked -->
+      </select>
+    </div>
+  </section>
+
+  <!-- 🗺️ LEVEL SELECT -->
+  <section id="levelSelect" class="level-select">
+    <h2>Select Your Stage</h2>
+    <div class="level-grid">
+      <button class="level-btn" data-stage="practice">Practice Studio</button>
+      <button class="level-btn" data-stage="talent">Talent Show</button>
+      <button class="level-btn" data-stage="nba">NBA Halftime</button>
+      <button class="level-btn locked" data-stage="finals" disabled>Shine Finals 🔒</button>
+    </div>
+  </section>
+
+  <!-- 🕹️ PERFORMANCE MODE -->
+  <section class="performance-mode" id="performance" style="display: none;">
+    <h2 class="performance-title">Shine Performance</h2>
+
+    <div class="stage">
+      <div class="note-track" id="track1"></div>
+      <div class="note-track" id="track2"></div>
+      <div class="note-track" id="track3"></div>
+      <div class="note-track" id="track4"></div>
+    </div>
+
+    <div class="input-bar">
+      <div class="tap-zone" data-track="1"></div>
+      <div class="tap-zone" data-track="2"></div>
+      <div class="tap-zone" data-track="3"></div>
+      <div class="tap-zone" data-track="4"></div>
+    </div>
+
+    <button id="startButton">Start Performance</button>
+
+    <div class="feedback" id="feedback">Ready?</div>
+    <div class="score" id="score">Score: 0</div>
+
+    <div class="performance-complete" id="performanceComplete" style="display: none;">
+      <h3>Performance Complete!</h3>
+      <p id="finalScoreText">Your score: 0</p>
+      <div class="unlock-message" id="unlockMessage" style="display: none;">
+        <p>🔥 You unlocked: <strong id="unlockedItemName">Pink Aura</strong>!</p>
       </div>
+      <button id="replayButton">Replay</button>
+    </div>
+  </section>
 
-      <div class="controls">
-        <label>Skin Tone:</label>
-        <select id="skinSelect">
-          <option value="light">Light</option>
-          <option value="medium" selected>Medium</option>
-          <option value="dark">Dark</option>
-        </select>
+  <!-- 🎵 Audio Track -->
+  <audio id="gameTrack" src="/assets/track1.mp3" preload="auto"></audio>
 
-        <label>Hair:</label>
-        <select id="hairSelect">
-          <option value="afro">Afro Puff</option>
-          <option value="braids">Braids</option>
-          <option value="bun" selected>Bun</option>
-          <option value="curls">Curls</option>
-        </select>
-
-        <label>Outfit:</label>
-        <select id="outfitSelect">
-          <option value="practice">Practice Fit</option>
-          <option value="stage" selected>Stage Costume</option>
-        </select>
-
-        <label>Aura:</label>
-<select id="auraSelect">
-  <option value="none">None</option>
-  <option value="gold" selected>Gold Sparkle</option>
-  <!-- Pink option added only if unlocked -->
-</select>
-
-<section class="performance-mode" id="performance" style="display: none;">
-
-
-<section id="levelSelect" class="level-select">
-  <h2>Select Your Stage</h2>
-  <div class="level-grid">
-    <button class="level-btn" data-stage="practice">Practice Studio</button>
-    <button class="level-btn" data-stage="talent">Talent Show</button>
-    <button class="level-btn" data-stage="nba">NBA Halftime</button>
-    <button class="level-btn locked" data-stage="finals" disabled>Shine Finals 🔒</button>
-  </div>
-</section>
-
-
-    <section class="performance-mode" id="performance">
-  <h2 class="performance-title">Shine Performance</h2>
-  <div class="stage">
-    <div class="note-track" id="track1"></div>
-    <div class="note-track" id="track2"></div>
-    <div class="note-track" id="track3"></div>
-    <div class="note-track" id="track4"></div>
-  </div>
-  <div class="input-bar">
-    <div class="tap-zone" data-track="1"></div>
-    <div class="tap-zone" data-track="2"></div>
-    <div class="tap-zone" data-track="3"></div>
-    <div class="tap-zone" data-track="4"></div>
-  </div>
-
-  <div class="performance-complete" id="performanceComplete" style="display: none;">
-  <h3>Performance Complete!</h3>
-  <p id="finalScoreText">Your score: 0</p>
-  <button id="replayButton">Replay</button>
-</div>
-
-<div class="unlock-message" id="unlockMessage" style="display: none;">
-  <p>🔥 You unlocked: <strong id="unlockedItemName">Pink Aura</strong>!</p>
-</div>
-
-  
-</section>
-
-<!-- start button -->
-  <button id="startButton">Start Performance</button>
-
-<!-- feedback section -->
-<div class="feedback" id="feedback">Ready?</div>
-<div class="score" id="score">Score: 0</div>
-
-
-</main>
-
-<audio id="gameTrack" src="/assets/track1.mp3" preload="auto"></audio>
-  <!-- Main JS Script -->
+  <!-- 💻 Scripts -->
   <script src="js/avatar.js"></script>
   <script src="js/rhythm.js"></script>
-  <script src="js/game.js"></script>
-
-
 </body>
 </html>
