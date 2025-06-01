@@ -1,3 +1,13 @@
+// ====================
+// Rhythm Game Engine
+// ====================
+
+// 1. Setup
+const tracks = [1, 2, 3, 4];
+const stage = document.querySelector('.stage');
+let score = 0;
+let currentStage = 'practice';
+
 const chart = [
   { time: 1000, track: 1 },
   { time: 1500, track: 3 },
@@ -9,9 +19,7 @@ const chart = [
   { time: 4700, track: 4 }
 ];
 
-const tracks = [1, 2, 3, 4];
-const stage = document.querySelector('.stage');
-
+// 2. Spawn Notes
 function spawnNote(trackNumber) {
   const note = document.createElement('div');
   note.classList.add('note');
@@ -21,23 +29,18 @@ function spawnNote(trackNumber) {
 
   let top = 0;
   const interval = setInterval(() => {
-    top += 4; // note speed
+    top += 4;
     note.style.top = top + 'px';
 
-    if (top > 360) { // missed zone
+    if (top > 400) {
       clearInterval(interval);
       note.remove();
-      // Optionally trigger a "miss" here
+      showFeedback('Miss!', '#ff2aad');
     }
   }, 16);
 }
 
-// Test: spawn random notes every second
-setInterval(() => {
-  const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
-  spawnNote(randomTrack);
-}, 1000);
-
+// 3. Feedback and Scoring
 function showFeedback(text, color = '#ff2aad') {
   const feedback = document.getElementById('feedback');
   feedback.textContent = text;
@@ -54,6 +57,7 @@ function updateScore(amount) {
   document.getElementById('score').textContent = `Score: ${score}`;
 }
 
+// 4. Tap Input Detection
 document.querySelectorAll('.tap-zone').forEach(zone => {
   zone.addEventListener('click', () => {
     const track = zone.dataset.track;
@@ -82,6 +86,7 @@ document.querySelectorAll('.tap-zone').forEach(zone => {
   });
 });
 
+// 5. Start Game Button Logic
 const startButton = document.getElementById('startButton');
 const audio = document.getElementById('gameTrack');
 
@@ -91,12 +96,63 @@ startButton.addEventListener('click', () => {
 
   const startTime = Date.now();
 
-  chart.forEach(note => {
+  chart.forEach((note, index) => {
     setTimeout(() => {
       spawnNote(note.track);
+
+      if (index === chart.length - 1) {
+        setTimeout(() => {
+          document.getElementById('performanceComplete').style.display = 'block';
+          document.getElementById('finalScoreText').textContent = `Your score: ${score}`;
+
+          // 🔓 Unlock style
+          if (score >= 600 && !localStorage.getItem('aura-pink-unlocked')) {
+            localStorage.setItem('aura-pink-unlocked', 'true');
+            document.getElementById('unlockedItemName').textContent = 'Pink Aura';
+            document.getElementById('unlockMessage').style.display = 'block';
+          }
+
+          // 🔓 Unlock stage
+          if (score >= 800 && currentStage === 'nba') {
+            localStorage.setItem('stage-finals-unlocked', 'true');
+          }
+
+        }, 2000);
+      }
+
     }, note.time);
   });
 
   startButton.disabled = true;
 });
 
+// 6. Replay Button
+document.getElementById('replayButton').addEventListener('click', () => {
+  score = 0;
+  document.getElementById('score').textContent = 'Score: 0';
+  document.getElementById('performanceComplete').style.display = 'none';
+  document.getElementById('startButton').disabled = false;
+  document.getElementById('feedback').textContent = 'Ready?';
+  document.getElementById('unlockMessage').style.display = 'none';
+});
+
+// 7. Stage Selector (Level Select)
+document.querySelectorAll('.level-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    if (!button.disabled) {
+      currentStage = button.dataset.stage;
+      document.getElementById('levelSelect').style.display = 'none';
+      document.getElementById('performance').style.display = 'block';
+      document.querySelector('.performance-title').textContent = `Stage: ${button.textContent}`;
+    }
+  });
+});
+
+// 8. Load Unlocks on Page Load
+window.addEventListener('DOMContentLoaded', () => {
+  const finalsBtn = document.querySelector('[data-stage="finals"]');
+  if (localStorage.getItem('stage-finals-unlocked')) {
+    finalsBtn.classList.remove('locked');
+    finalsBtn.disabled = false;
+  }
+});

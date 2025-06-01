@@ -51,13 +51,25 @@
         </select>
 
         <label>Aura:</label>
-        <select id="auraSelect">
-          <option value="none">None</option>
-          <option value="pink">Pink Flame</option>
-          <option value="gold" selected>Gold Sparkle</option>
-        </select>
-      </div>
-    </section>
+<select id="auraSelect">
+  <option value="none">None</option>
+  <option value="gold" selected>Gold Sparkle</option>
+  <!-- Pink option added only if unlocked -->
+</select>
+
+<section class="performance-mode" id="performance" style="display: none;">
+
+
+<section id="levelSelect" class="level-select">
+  <h2>Select Your Stage</h2>
+  <div class="level-grid">
+    <button class="level-btn" data-stage="practice">Practice Studio</button>
+    <button class="level-btn" data-stage="talent">Talent Show</button>
+    <button class="level-btn" data-stage="nba">NBA Halftime</button>
+    <button class="level-btn locked" data-stage="finals" disabled>Shine Finals 🔒</button>
+  </div>
+</section>
+
 
     <section class="performance-mode" id="performance">
   <h2 class="performance-title">Shine Performance</h2>
@@ -74,15 +86,25 @@
     <div class="tap-zone" data-track="4"></div>
   </div>
 
-  <!-- start button -->
-    <button id="startButton">Start Performance</button>
+  <div class="performance-complete" id="performanceComplete" style="display: none;">
+  <h3>Performance Complete!</h3>
+  <p id="finalScoreText">Your score: 0</p>
+  <button id="replayButton">Replay</button>
+</div>
 
-<!-- feedback section -->
-  <div class="feedback" id="feedback">Ready?</div>
-<div class="score" id="score">Score: 0</div>
+<div class="unlock-message" id="unlockMessage" style="display: none;">
+  <p>🔥 You unlocked: <strong id="unlockedItemName">Pink Aura</strong>!</p>
+</div>
 
+  
 </section>
 
+<!-- start button -->
+  <button id="startButton">Start Performance</button>
+
+<!-- feedback section -->
+<div class="feedback" id="feedback">Ready?</div>
+<div class="score" id="score">Score: 0</div>
 
 
 </main>

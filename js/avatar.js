@@ -22,6 +22,14 @@ const layerPaths = {
 };
 
 window.addEventListener("DOMContentLoaded", () => {
+    // 🟣 Check if Pink Aura is unlocked
+    if (localStorage.getItem('aura-pink-unlocked')) {
+        const pinkOption = document.createElement('option');
+        pinkOption.value = 'pink';
+        pinkOption.textContent = 'Pink Flame';
+        auraSelect.appendChild(pinkOption);
+    }
+    // 👇 Rest of your avatar setup code (event listeners etc.) goes here...
   document.getElementById("skinSelect").onchange = e => {
     document.getElementById("skinLayer").src = layerPaths.skin[e.target.value];
   };
@@ -31,7 +39,10 @@ window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("outfitSelect").onchange = e => {
     document.getElementById("outfitLayer").src = layerPaths.outfit[e.target.value];
   };
-  document.getElementById("auraSelect").onchange = e => {
-    document.getElementById("auraLayer").src = layerPaths.aura[e.target.value];
-  };
+  window.addEventListener('DOMContentLoaded', () => {
+  const auraSelect = document.getElementById('auraSelect');
+
+
+});
+
 });
