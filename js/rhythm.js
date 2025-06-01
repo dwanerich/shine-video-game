@@ -86,7 +86,7 @@ document.querySelectorAll('.tap-zone').forEach(zone => {
   });
 });
 
-// 5. Start Game Button Logic
+// 5. Start Game Logic
 const startButton = document.getElementById('startButton');
 const audio = document.getElementById('gameTrack');
 
@@ -105,19 +105,19 @@ startButton.addEventListener('click', () => {
           document.getElementById('performanceComplete').style.display = 'block';
           document.getElementById('finalScoreText').textContent = `Your score: ${score}`;
 
-          // 🔓 Unlock style
+          // 🔓 Unlock Pink Aura
           if (score >= 600 && !localStorage.getItem('aura-pink-unlocked')) {
             localStorage.setItem('aura-pink-unlocked', 'true');
             document.getElementById('unlockedItemName').textContent = 'Pink Aura';
             document.getElementById('unlockMessage').style.display = 'block';
           }
 
-          // 🔓 Unlock stage
+          // 🔓 Unlock Shine Finals stage
           if (score >= 800 && currentStage === 'nba') {
             localStorage.setItem('stage-finals-unlocked', 'true');
           }
 
-        }, 2000);
+        }, 2000); // delay to allow last note to drop
       }
 
     }, note.time);
@@ -131,12 +131,12 @@ document.getElementById('replayButton').addEventListener('click', () => {
   score = 0;
   document.getElementById('score').textContent = 'Score: 0';
   document.getElementById('performanceComplete').style.display = 'none';
+  document.getElementById('unlockMessage').style.display = 'none';
   document.getElementById('startButton').disabled = false;
   document.getElementById('feedback').textContent = 'Ready?';
-  document.getElementById('unlockMessage').style.display = 'none';
 });
 
-// 7. Stage Selector (Level Select)
+// 7. Level Selection Logic
 document.querySelectorAll('.level-btn').forEach(button => {
   button.addEventListener('click', () => {
     if (!button.disabled) {
@@ -148,7 +148,7 @@ document.querySelectorAll('.level-btn').forEach(button => {
   });
 });
 
-// 8. Load Unlocks on Page Load
+// 8. Unlock Shine Finals if previously earned
 window.addEventListener('DOMContentLoaded', () => {
   const finalsBtn = document.querySelector('[data-stage="finals"]');
   if (localStorage.getItem('stage-finals-unlocked')) {
