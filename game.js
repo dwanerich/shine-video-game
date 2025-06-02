@@ -5,7 +5,7 @@ let score = 0;
 document.addEventListener('keydown', (e) => {
   playerInput.push(e.code);
 
-  // Trim input to combo length
+  // Limit array to last N inputs
   if (playerInput.length > combo.length) {
     playerInput.shift();
   }
@@ -24,14 +24,12 @@ function checkCombo() {
     feedback.textContent = 'SHINING!';
     score += 1;
 
-    // Fill shine bar
     const shinePercent = Math.min(score * 10, 100);
     shineFill.style.width = shinePercent + '%';
 
-    // Reset combo bar for now
-    comboFill.style.width = (score * 5) + '%';
+    comboFill.style.width = Math.min(score * 5, 100) + '%';
 
-    playerInput = []; // reset for next combo
+    playerInput = [];
   } else {
     feedback.textContent = '';
   }
