@@ -1,37 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SHINE MODE</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
 <body>
-  <div class="hub-container">
-    <div class="top-bar">
-      <div class="xp-box">100</div>
-      <div class="player-name">PLAYER</div>
-    </div>
-
-    <h1 class="shine-title">SHINE</h1>
-
-    <div class="avatar-layout">
-      <div class="button-column left">
-        <button class="menu-btn">STYLE</button>
-        <button class="menu-btn" onclick="window.location.href='story.html'">PERFORM</button>
-        <button class="menu-btn">COLLECT</button>
-      </div>
-
-      <div class="avatar-wrapper">
-        <img src="assets/avatar.png" alt="Avatar" class="avatar" />
-      </div>
-
-      <div class="button-column right">
-        <button class="menu-btn">TRAIN</button>
-        <button class="menu-btn" onclick="window.location.href='performance.html'">PERFORM</button>
-        <button class="menu-btn">COLLECT</button>
-      </div>
-    </div>
+  <div class="hud">
+    <div class="stage">SUBWAY BATTLE</div>
+    <div class="shine-bar"><div id="shine-fill"></div></div>
+    <div class="combo-bar"><div id="combo-fill"></div></div>
+    <div id="combo-input">← ↑ ○ →</div>
+    <div class="feedback" id="feedback"></div>
   </div>
+
+  <script src="game.js"></script>
 </body>
-</html>
