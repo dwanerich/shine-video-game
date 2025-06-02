@@ -385,6 +385,10 @@ body {
   100% { box-shadow: 0 0 10px #ff2aad; }
 }
 
+.sparkle {
+  border: 2px solid rgb(240, 47, 208);
+}
+
 .sparkle-burst {
   position: absolute;
   width: 100%;
