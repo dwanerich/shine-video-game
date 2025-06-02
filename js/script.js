@@ -131,14 +131,17 @@ function triggerAvatarAction(action) {
   const avatar = document.querySelector(".avatar-wrapper");
   const sparkle = avatar.querySelector(".sparkle-burst");
 
+  // Remove any previous animation classes
   avatar.classList.remove("pose", "dance", "shine");
-  void avatar.offsetWidth;
+  void avatar.offsetWidth; // Force reflow to restart animation
   avatar.classList.add(action);
 
-  // Trigger sparkles
-  sparkle.classList.remove("active");
-  void sparkle.offsetWidth;
-  sparkle.classList.add("active");
+  // Trigger sparkle burst animation
+  if (sparkle) {
+    sparkle.classList.remove("active");
+    void sparkle.offsetWidth; // Force reflow for restart
+    sparkle.classList.add("active");
+  }
 }
 
 
