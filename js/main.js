@@ -16,5 +16,6 @@ function createSparkle(x, y) {
 }
 
 document.addEventListener('click', (e) => {
-  createSparkle(e.clientX, e.clientY);
+  createSparkle(e.pageX, e.pageY);
 });
+
