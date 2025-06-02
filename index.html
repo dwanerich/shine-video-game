@@ -1,25 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style src="style.css"></style>
-
-  <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SHINE MODE</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 <body>
-  
-</body>
-</html>
 
-<body>
-  <div class="hud">
-    <div class="stage">SUBWAY BATTLE</div>
-    <div class="shine-bar"><div id="shine-fill"></div></div>
-    <div class="combo-bar"><div id="combo-fill"></div></div>
-    <div id="combo-input">← ↑ ○ →</div>
-    <div class="feedback" id="feedback"></div>
+  <div class="hub-container">
+
+    <!-- Top XP and Player -->
+    <div class="top-bar">
+      <div class="xp-box">100</div>
+      <div class="player-name">PLAYER</div>
+    </div>
+
+    <!-- Title -->
+    <h1 class="shine-title">SHINE</h1>
+
+    <!-- Avatar + Buttons Layout -->
+    <div class="avatar-layout">
+
+      <!-- Left Buttons -->
+      <div class="button-column">
+        <button class="menu-btn" onclick="window.location.href='style.html'">STYLE</button>
+        <button class="menu-btn" onclick="window.location.href='story.html'">STORY</button>
+        <button class="menu-btn" onclick="window.location.href='collect.html'">COLLECT</button>
+      </div>
+
+      <!-- Avatar -->
+      <div class="avatar-wrapper">
+        <img src="assets/avatar.png" alt="Avatar" class="avatar" />
+      </div>
+
+      <!-- Right Buttons -->
+      <div class="button-column">
+        <button class="menu-btn" onclick="window.location.href='train.html'">TRAIN</button>
+        <button class="menu-btn" onclick="window.location.href='performance.html'">PERFORM</button>
+        <button class="menu-btn" onclick="window.location.href='settings.html'">OPTIONS</button>
+      </div>
+
+    </div>
+
   </div>
 
-  <script src="game.js"></script>
 </body>
+</html>
