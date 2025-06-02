@@ -1,175 +1,75 @@
-<!-- PERFORMANCE MODE UI - REFACTORED TO MATCH VISUAL MOCKUP -->
-<section class="performance-mode" id="performance">
-  <h2 class="mode-title">PERFORMANCE MODE</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHINE MODE - Performance</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-  <div class="customizer-grid">
-    <!-- LEFT CONTROLS -->
-    <div class="customizer-controls left">
-      <div class="control-item">
-        <label>SKIN TONE</label>
-        <div class="cycle-buttons">
-          <button class="arrow-btn" data-category="skin" data-direction="prev">❮</button>
-          <div id="skinPreview" class="preview-circle"></div>
-          <button class="arrow-btn" data-category="skin" data-direction="next">❯</button>
+<body>
+  <!-- === PERFORMANCE MODE SECTION === -->
+  <section class="performance-mode" id="performance">
+    <h2 class="mode-title">PERFORMANCE MODE</h2>
+
+    <div class="customizer-grid">
+      <!-- LEFT CONTROLS -->
+      <div class="customizer-controls left">
+        <div class="control-item">
+          <label>SKIN TONE</label>
+          <div class="cycle-buttons">
+            <button class="arrow-btn" data-category="skin" data-direction="prev">❮</button>
+            <div id="skinPreview" class="preview-circle"></div>
+            <button class="arrow-btn" data-category="skin" data-direction="next">❯</button>
+          </div>
+        </div>
+
+        <div class="control-item">
+          <label>OUTFIT</label>
+          <div class="cycle-buttons">
+            <button class="arrow-btn" data-category="outfit" data-direction="prev">❮</button>
+            <div id="outfitPreview" class="preview-circle"></div>
+            <button class="arrow-btn" data-category="outfit" data-direction="next">❯</button>
+          </div>
         </div>
       </div>
 
-      <div class="control-item">
-        <label>OUTFIT</label>
-        <div class="cycle-buttons">
-          <button class="arrow-btn" data-category="outfit" data-direction="prev">❮</button>
-          <div id="outfitPreview" class="preview-circle"></div>
-          <button class="arrow-btn" data-category="outfit" data-direction="next">❯</button>
+      <!-- AVATAR DISPLAY -->
+      <div class="avatar-wrapper">
+        <!-- Image layers loaded by JS -->
+        <img id="skinLayer" src="/assets/skin-medium.png" alt="Skin Layer" class="main-avatar layer">
+        <img id="hairLayer" src="/assets/hair-afro.png" alt="Hair Layer" class="main-avatar layer">
+        <img id="outfitLayer" src="/assets/outfit-stage.png" alt="Outfit Layer" class="main-avatar layer">
+        <img id="auraLayer" src="/assets/aura-gold.png" alt="Aura Layer" class="main-avatar layer">
+      </div>
+
+      <!-- RIGHT CONTROLS -->
+      <div class="customizer-controls right">
+        <div class="control-item">
+          <label>HAIRSTYLE</label>
+          <div class="cycle-buttons">
+            <button class="arrow-btn" data-category="hair" data-direction="prev">❮</button>
+            <div id="hairPreview" class="preview-circle"></div>
+            <button class="arrow-btn" data-category="hair" data-direction="next">❯</button>
+          </div>
+        </div>
+
+        <div class="control-item">
+          <label>AURA</label>
+          <div class="cycle-buttons">
+            <button class="arrow-btn" data-category="aura" data-direction="prev">❮</button>
+            <div id="auraPreview" class="preview-circle"></div>
+            <button class="arrow-btn" data-category="aura" data-direction="next">❯</button>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- AVATAR DISPLAY -->
-    <div class="avatar-wrapper">
-      <img src="/assets/avatar-mockup.png" alt="Dancer Avatar" class="main-avatar" />
-    </div>
+    <button id="startButton" class="start-performance">BEGIN PERFORMANCE</button>
+  </section>
 
-    <!-- RIGHT CONTROLS -->
-    <div class="customizer-controls right">
-      <div class="control-item">
-        <label>HAIRSTYLE</label>
-        <div class="cycle-buttons">
-          <button class="arrow-btn" data-category="hair" data-direction="prev">❮</button>
-          <div id="hairPreview" class="preview-circle"></div>
-          <button class="arrow-btn" data-category="hair" data-direction="next">❯</button>
-        </div>
-      </div>
-
-      <div class="control-item">
-        <label>AURA</label>
-        <div class="cycle-buttons">
-          <button class="arrow-btn" data-category="aura" data-direction="prev">❮</button>
-          <div id="auraPreview" class="preview-circle"></div>
-          <button class="arrow-btn" data-category="aura" data-direction="next">❯</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <button id="startButton" class="start-performance">BEGIN PERFORMANCE</button>
-</section>
-
-<style>
-.performance-mode {
-  padding: 80px 20px;
-  background: radial-gradient(circle, #1a1a1a, #000);
-  color: white;
-  text-align: center;
-}
-
-.mode-title {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: #ff2aad;
-  font-weight: 900;
-  letter-spacing: 2px;
-}
-
-.customizer-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.customizer-controls {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  flex: 1;
-  min-width: 200px;
-  max-width: 220px;
-}
-
-.control-item label {
-  font-weight: 700;
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-  color: #00ffd5;
-}
-
-.cycle-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.arrow-btn {
-  background: #ff2aad;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  font-size: 1.2rem;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.arrow-btn:hover {
-  background: #e42094;
-}
-
-.preview-circle {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: #333;
-  box-shadow: 0 0 8px #00ffd580;
-}
-
-.avatar-wrapper {
-  flex: 1;
-  min-width: 250px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.main-avatar {
-  width: 240px;
-  height: auto;
-  filter: drop-shadow(0 0 10px #ff2aad);
-  border-radius: 20px;
-  transition: transform 0.4s ease;
-}
-
-.main-avatar:hover {
-  transform: scale(1.05);
-}
-
-.start-performance {
-  margin-top: 40px;
-  padding: 16px 40px;
-  font-size: 1.2rem;
-  background: #00ff90;
-  color: #111;
-  font-weight: 900;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.start-performance:hover {
-  background: #00cc74;
-}
-
-@media (max-width: 768px) {
-  .customizer-grid {
-    flex-direction: column;
-    gap: 30px;
-  }
-  .avatar-wrapper {
-    order: -1;
-  }
-}
-</style>
+  <!-- === SCRIPT FILES === -->
+  <script src="js/avatar.js"></script>
+  <script src="js/rhythm.js"></script>
+</body>
+</html>
