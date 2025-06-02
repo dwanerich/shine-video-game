@@ -37,3 +37,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Add more interactivity here...
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const avatarWrapper = document.querySelector(".avatar-wrapper");
+  const changeBtn = document.querySelector(".change-style");
+  const startBtn = document.querySelector(".start-performance");
+  const performanceMode = document.getElementById("performance-mode");
+  const mainContent = document.querySelector(".main-content");
+  const backButton = document.querySelector(".back-button");
+
+  let currentStyle = 0;
+  const avatarStyles = [
+    "avatar_full_neon_puffer.png"
+  ];
+
+  changeBtn.addEventListener("click", () => {
+    currentStyle = (currentStyle + 1) % avatarStyles.length;
+    document.querySelector(".avatar-static").src = `assets/avatar/${avatarStyles[currentStyle]}`;
+  });
+
+  startBtn.addEventListener("click", () => {
+    mainContent.classList.add("hidden");
+    performanceMode.classList.add("show");
+  });
+
+  backButton.addEventListener("click", () => {
+    performanceMode.classList.remove("show");
+    mainContent.classList.remove("hidden");
+  });
+});
