@@ -54,12 +54,12 @@ body {
   overflow: hidden;
 }
 
-.avatar-static {
+/* .avatar-static {
   width: 100%;
   height: auto;
   object-fit: contain;
   border-radius: 20px;
-}
+} */
 
 
 .layer {
