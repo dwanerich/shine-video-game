@@ -62,9 +62,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Unlock audio with user gesture and play
     bgMusic.currentTime = 0;
-    bgMusic.play().catch(() => {
-      console.warn("Playback blocked until user interacts.");
-    });
+   let audioCtx, analyser, source, dataArray;
+
+startBtn.addEventListener("click", () => {
+  mainContent.classList.add("hidden");
+  performanceMode.classList.add("show");
+
+  // Initialize AudioContext once unlocked by interaction
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    analyser = audioCtx.createAnalyser();
+    source = audioCtx.createMediaElementSource(bgMusic);
+    source.connect(analyser);
+    analyser.connect(audioCtx.destination);
+    analyser.fftSize = 256;
+    const bufferLength = analyser.frequencyBinCount;
+    dataArray = new Uint8Array(bufferLength);
+  }
+
+  bgMusic.currentTime = 0;
+  bgMusic.play();
+  audioCtx.resume();
+
+  // Start glow loop
+  animateGlow();
+});
+
   });
     backButton.addEventListener("click", () => {
     performanceMode.classList.remove("show");
@@ -75,4 +98,3 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
   });
-});
