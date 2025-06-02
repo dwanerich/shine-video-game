@@ -163,3 +163,70 @@ body {
   filter: drop-shadow(0 0 20px #ff6a00);
 }
 
+/* --- STORY MODE --- */
+.story-container {
+  background: radial-gradient(ellipse at center, #000000 40%, #1a1a1a 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.story-scene {
+  margin-top: 30px;
+}
+
+.story-avatar {
+  width: 280px;
+  border-radius: 20px;
+  box-shadow: 0 0 40px #ff6a00;
+  max-height: 380px;
+  object-fit: cover;
+}
+
+.dialogue-box {
+  max-width: 600px;
+  margin-top: 40px;
+}
+
+.dialogue-text {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #ffffff;
+}
+
+.choice-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.story-btn {
+  background: #ff6a00;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 16px;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  box-shadow: 0 0 14px #ff6a00;
+  transition: 0.3s ease;
+}
+
+.story-btn.alt {
+  background: transparent;
+  color: #ccc;
+  border: 2px solid #ff6a00;
+}
+
+.story-btn:hover {
+  transform: scale(1.05);
+}
+
+
