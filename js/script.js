@@ -167,15 +167,6 @@ document.addEventListener('click', (e) => {
   createSparkle(e.clientX, e.clientY);
 });
 
-const avatar = document.getElementById('avatar'); // Adjust ID if needed
-
-avatar.addEventListener('mouseenter', () => {
-  for (let i = 0; i < 5; i++) {
-    const x = avatar.offsetLeft + Math.random() * avatar.offsetWidth;
-    const y = avatar.offsetTop + Math.random() * avatar.offsetHeight;
-    createSparkle(x, y);
-  }
-});
 
 
 
