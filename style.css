@@ -173,15 +173,6 @@ footer {
   color: #666;
 }
 
-.avatar-wrapper {
-  animation: spin360 10s linear infinite;
-}
-
-@keyframes spin360 {
-  from { transform: rotateY(0deg); }
-  to { transform: rotateY(360deg); }
-}
-
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
   .customizer-grid {
