@@ -142,6 +142,13 @@ function triggerAvatarAction(action) {
     void sparkle.offsetWidth; // Force reflow for restart
     sparkle.classList.add("active");
   }
+  document.querySelectorAll(".perf-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const action = btn.getAttribute("data-action");
+    triggerAvatarAction(action);
+  });
+});
+
 }
 
 
