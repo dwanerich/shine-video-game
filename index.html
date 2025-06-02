@@ -1,76 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SHINE MODE - Performance</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SHINE MODE – Avatar Builder</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <!-- === PERFORMANCE MODE SECTION === -->
-  <section class="performance-mode" id="performance">
-    <h2 class="mode-title">PERFORMANCE MODE</h2>
+  <!-- Navigation -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">SHINE MODE</div>
+    </nav>
+  </header>
 
-    <div class="customizer-grid">
-      <!-- LEFT CONTROLS -->
-      <div class="customizer-controls left">
-        <div class="control-item">
-          <label>SKIN TONE</label>
-          <div class="cycle-buttons">
-            <button class="arrow-btn" data-category="skin" data-direction="prev">❮</button>
-            <div id="skinPreview" class="preview-circle"></div>
-            <button class="arrow-btn" data-category="skin" data-direction="next">❯</button>
-          </div>
-        </div>
-
-        <div class="control-item">
-          <label>OUTFIT</label>
-          <div class="cycle-buttons">
-            <button class="arrow-btn" data-category="outfit" data-direction="prev">❮</button>
-            <div id="outfitPreview" class="preview-circle"></div>
-            <button class="arrow-btn" data-category="outfit" data-direction="next">❯</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- AVATAR DISPLAY -->
+  <!-- Main Avatar + Info -->
+  <main class="main-content">
+    <section class="avatar-section">
       <div class="avatar-wrapper">
-        <!-- Image layers loaded by JS -->
-        <img id="skinLayer" src="/assets/skin-medium.png" alt="Skin Layer" class="main-avatar layer">
-        <img id="hairLayer" src="/assets/hair-afro.png" alt="Hair Layer" class="main-avatar layer">
-        <img id="outfitLayer" src="/assets/outfit-stage.png" alt="Outfit Layer" class="main-avatar layer">
-        <img id="auraLayer" src="/assets/aura-gold.png" alt="Aura Layer" class="main-avatar layer">
+        <img src="assets/layers/skin/skin_base_dark_brown.png" class="layer skin" alt="Skin Layer" />
+        <img src="assets/layers/hair/hair_braids_spacebuns.png" class="layer hair" alt="Hair Layer" />
+        <img src="assets/layers/outfit/outfit_neon_puffer_black.png" class="layer outfit" alt="Outfit Layer" />
+        <img src="assets/layers/aura/aura_neon_glow.png" class="layer aura" alt="Aura Layer" />
       </div>
+    </section>
 
-      <!-- RIGHT CONTROLS -->
-      <div class="customizer-controls right">
-        <div class="control-item">
-          <label>HAIRSTYLE</label>
-          <div class="cycle-buttons">
-            <button class="arrow-btn" data-category="hair" data-direction="prev">❮</button>
-            <div id="hairPreview" class="preview-circle"></div>
-            <button class="arrow-btn" data-category="hair" data-direction="next">❯</button>
-          </div>
-        </div>
+    <section class="info-panel">
+      <h2>Customize Your Shine</h2>
+      <p>Select your skin, hair, outfit, and aura to build your performer.</p>
+    </section>
+  </main>
 
-        <div class="control-item">
-          <label>AURA</label>
-          <div class="cycle-buttons">
-            <button class="arrow-btn" data-category="aura" data-direction="prev">❮</button>
-            <div id="auraPreview" class="preview-circle"></div>
-            <button class="arrow-btn" data-category="aura" data-direction="next">❯</button>
-          </div>
-        </div>
-      </div>
-    </div>
+  <!-- Footer -->
+  <footer>
+    <p class="footer-text">© 2025 SHINE MODE. All rights reserved.</p>
+  </footer>
 
-    <button id="startButton" class="start-performance">BEGIN PERFORMANCE</button>
-  </section>
-
-  <!-- === SCRIPT FILES === -->
+  <!-- Future JavaScript -->
   <script src="js/script.js"></script>
-  <script src="js/avatar.js"></script>
-  <script src="js/rhythm.js"></script>
 </body>
 </html>

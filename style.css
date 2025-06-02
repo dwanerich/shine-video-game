@@ -125,3 +125,11 @@
     height: 280px;
   }
 }
+.logo {
+    font-size: 1.5rem;
+  }
+
+  .info-panel h2 {
+    font-size: 1.4rem;
+  }
+}
