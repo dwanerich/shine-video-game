@@ -173,6 +173,39 @@ footer {
   color: #666;
 }
 
+.avatar-wrapper {
+  animation: spin360 10s linear infinite;
+}
+
+@keyframes spin360 {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+
+.avatar-wrapper {
+  transition: transform 1s ease;
+  transform-style: preserve-3d;
+}
+
+.avatar-wrapper:hover {
+  transform: rotateY(360deg);
+}
+
+.avatar-wrapper {
+  perspective: 1000px;
+}
+
+.layer {
+  transform: rotateY(0deg);
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+}
+
+.avatar-wrapper:hover .layer {
+  transform: rotateY(20deg) rotateX(5deg);
+}
+
+
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
   .customizer-grid {
