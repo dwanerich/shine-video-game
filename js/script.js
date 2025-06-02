@@ -136,3 +136,18 @@ function triggerAvatarAction(action) {
   avatar.classList.add(action); // add new
 }
 
+function triggerAvatarAction(action) {
+  const avatar = document.querySelector(".avatar-wrapper");
+  const sparkle = avatar.querySelector(".sparkle-burst");
+
+  avatar.classList.remove("pose", "dance", "shine");
+  void avatar.offsetWidth;
+  avatar.classList.add(action);
+
+  // Trigger sparkles
+  sparkle.classList.remove("active");
+  void sparkle.offsetWidth;
+  sparkle.classList.add("active");
+}
+
+
