@@ -98,3 +98,22 @@ startBtn.addEventListener("click", () => {
 });
 
   });
+
+  function animateGlow() {
+  const avatar = document.querySelector(".avatar-wrapper");
+
+  function glowLoop() {
+    requestAnimationFrame(glowLoop);
+
+    if (!analyser) return;
+
+    analyser.getByteFrequencyData(dataArray);
+    const avg = dataArray.reduce((a, b) => a + b) / dataArray.length;
+
+    const intensity = Math.min(1, avg / 100); // normalize
+    avatar.style.boxShadow = `0 0 ${10 + intensity * 40}px rgba(255,42,173,${0.5 + intensity * 0.5})`;
+  }
+
+  glowLoop();
+}
+
