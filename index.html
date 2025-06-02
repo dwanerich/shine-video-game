@@ -3,78 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SHINE MODE – Avatar Builder</title>
+  <title>SHINE MODE</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Navigation -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">SHINE MODE</div>
-    </nav>
-  </header>
-
-  <!-- Main Avatar + Info -->
-  <main class="main-content">
-    <section class="avatar-section">
-      <div class="avatar-wrapper">
-        <img src="assets/avatar/avatar_full_neon_puffer.png" class="avatar-static" alt="Avatar">
-        <div id="sparkle-container"></div>
-
-        
-        <!-- <img src="assets/layers/skin/skin_base_dark_brown.png" class="layer skin" alt="Skin Layer" /> -->
-        <!-- <img src="assets/layers/hair/hair_braids_spacebuns.png" class="layer hair" alt="Hair Layer" /> -->
-        <!-- <img src="assets/layers/aura/aura_neon_glow.png" class="layer aura" alt="Aura Layer" /> -->
-      </div>
-
-      <div class="performance-actions">
-          <button class="perf-btn" data-action="pose">Pose</button>
-          <button class="perf-btn" data-action="dance">Dance</button>
-          <button class="perf-btn" data-action="shine">Shine</button>
-      </div>
-
-    </section>
-
-    <div class="avatar-actions">
-      <button class="change-style">Change Style</button>
-      <button class="start-performance">Start Performance</button>
+  <div class="hub-container">
+    <div class="top-bar">
+      <div class="xp-box">100</div>
+      <div class="player-name">PLAYER</div>
     </div>
-    
-    <section class="info-panel">
-      <h2>Customize Your Shine</h2>
-      <p>Select your skin, hair, outfit, and aura to build your performer.</p>
-    </section>
 
+    <h1 class="shine-title">SHINE</h1>
 
-  </main>
+    <div class="avatar-wrapper">
+      <img src="assets/avatar.png" alt="Avatar" class="avatar" />
+    </div>
 
-  <section id="performance-mode" class="performance-mode hidden">
-  <div class="performance-header">NOW PERFORMING</div>
-
-  <div class="performance-avatar">
-    <img src="assets/avatar/avatar_full_neon_puffer.png" class="avatar-perform" alt="Avatar Performing">
+    <div class="button-grid">
+      <button class="menu-btn">STYLE</button>
+      <button class="menu-btn">TRAIN</button>
+      <button class="menu-btn">STORY</button>
+      <button class="menu-btn">PERFORM</button>
+      <button class="menu-btn">COLLECT</button>
+    </div>
   </div>
-
-  <button class="back-button">← Back</button>
-</section>
-
-
-  <!-- Footer -->
-  <footer>
-    <p class="footer-text">© 2025 SHINE MODE. All rights reserved.</p>
-  </footer>
-
-
-  <audio id="bgMusic" src="assets/audio/shine_theme.mp3" preload="auto"></audio>
-
-
-  <!-- Future JavaScript -->
-  <script src="js/script.js"></script>
-  <script src="js/main.js"></script>
-  <!-- <script src="js/avatar.js"></script> -->
-  <!-- <script src="js/rhythm.js"></script> -->
-  <!-- <script src="js/game.js"></script> -->
-
-
 </body>
 </html>
