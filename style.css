@@ -290,6 +290,17 @@ body {
   display: none !important;
 }
 
+.avatar-wrapper.glow {
+  animation: pulseGlow 1.8s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%   { box-shadow: 0 0 10px #ff2aad55; }
+  50%  { box-shadow: 0 0 30px #ff2aadff; }
+  100% { box-shadow: 0 0 10px #ff2aad55; }
+}
+
+
 
 /* === FOOTER === */
 footer {

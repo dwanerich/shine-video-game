@@ -44,11 +44,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const performanceMode = document.getElementById("performance-mode");
   const mainContent = document.querySelector(".main-content");
   const backButton = document.querySelector(".back-button");
+  const bgMusic = document.getElementById("bgMusic");
 
   let currentStyle = 0;
-  const avatarStyles = [
-    "avatar_full_neon_puffer.png"
-  ];
+  const avatarStyles = ["avatar_full_neon_puffer.png"];
 
   changeBtn.addEventListener("click", () => {
     currentStyle = (currentStyle + 1) % avatarStyles.length;
@@ -58,10 +57,22 @@ document.addEventListener("DOMContentLoaded", () => {
   startBtn.addEventListener("click", () => {
     mainContent.classList.add("hidden");
     performanceMode.classList.add("show");
-  });
+    avatarWrapper.classList.add("glow");
 
-  backButton.addEventListener("click", () => {
+
+    // Unlock audio with user gesture and play
+    bgMusic.currentTime = 0;
+    bgMusic.play().catch(() => {
+      console.warn("Playback blocked until user interacts.");
+    });
+  });
+    backButton.addEventListener("click", () => {
     performanceMode.classList.remove("show");
     mainContent.classList.remove("hidden");
+    avatarWrapper.classList.remove("glow"); // removes glow
+    bgMusic.pause();
+    bgMusic.currentTime = 0;
+});
+
   });
 });
