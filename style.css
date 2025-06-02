@@ -13,7 +13,7 @@ body {
 .hub-container {
   text-align: center;
   width: 100%;
-  max-width: 500px;
+  max-width: 900px;
   padding: 20px;
   position: relative;
 }
@@ -44,55 +44,57 @@ body {
 }
 
 .shine-title {
-  font-size: 48px;
+  font-size: 64px;
   font-weight: 900;
   letter-spacing: 2px;
-  margin: 80px 0 10px;
+  margin-bottom: 20px;
+}
+
+.avatar-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  gap: 40px;
+  margin-top: 30px;
 }
 
 .avatar-wrapper {
-  margin: 0 auto 30px;
+  position: relative;
+  z-index: 1;
 }
 
 .avatar {
-  width: 240px;
+  width: 280px;
   border-radius: 50%;
   border: 6px solid #ff6a00;
   box-shadow: 0 0 40px #ff6a00;
 }
 
-.menu-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px 16px;
-  justify-items: center;
-  margin-top: 20px;
+.button-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 2;
 }
 
 .menu-btn {
   background: #000;
   border: 2px solid #ff6a00;
   color: white;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
-  padding: 16px 24px;
-  width: 140px;
-  border-radius: 8px;
-  box-shadow: 0 0 8px #ff6a00;
+  padding: 14px 28px;
+  width: 160px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ff6a00;
   transition: 0.2s ease;
   cursor: pointer;
+  text-transform: uppercase;
 }
 
 .menu-btn:hover {
   background: #ff6a00;
   color: black;
   box-shadow: 0 0 16px #ff6a00;
-}
-
-.left {
-  justify-self: end;
-}
-
-.right {
-  justify-self: start;
 }
