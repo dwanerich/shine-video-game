@@ -129,15 +129,6 @@ startBtn.addEventListener("click", () => {
 
 function triggerAvatarAction(action) {
   const avatar = document.querySelector(".avatar-wrapper");
-
-  avatar.classList.remove("pose", "dance", "shine"); // remove previous
-  void avatar.offsetWidth; // reset animation
-
-  avatar.classList.add(action); // add new
-}
-
-function triggerAvatarAction(action) {
-  const avatar = document.querySelector(".avatar-wrapper");
   const sparkle = avatar.querySelector(".sparkle-burst");
 
   avatar.classList.remove("pose", "dance", "shine");
