@@ -151,4 +151,31 @@ function triggerAvatarAction(action) {
 
 }
 
+function createSparkle(x, y) {
+  const sparkle = document.createElement('img');
+  sparkle.src = './assets/sparkle.png'; // Match your file structure
+  sparkle.className = 'sparkle';
+  sparkle.style.left = `${x}px`;
+  sparkle.style.top = `${y}px`;
+
+  document.getElementById('sparkle-container').appendChild(sparkle);
+  setTimeout(() => sparkle.remove(), 1000);
+}
+
+// Example: Sparkles on click
+document.addEventListener('click', (e) => {
+  createSparkle(e.clientX, e.clientY);
+});
+
+const avatar = document.getElementById('avatar'); // Adjust ID if needed
+
+avatar.addEventListener('mouseenter', () => {
+  for (let i = 0; i < 5; i++) {
+    const x = avatar.offsetLeft + Math.random() * avatar.offsetWidth;
+    const y = avatar.offsetTop + Math.random() * avatar.offsetHeight;
+    createSparkle(x, y);
+  }
+});
+
+
 
