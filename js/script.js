@@ -23,6 +23,16 @@ document.addEventListener("DOMContentLoaded", function () {
         target.scrollIntoView({ behavior: "smooth" });
       }
     });
+
+    const actionButtons = document.querySelectorAll(".perf-btn");
+
+    actionButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const action = btn.getAttribute("data-action");
+        triggerAvatarAction(action);
+      });
+    });
+
   });
 
   // Performance Mode Button Example
@@ -115,5 +125,14 @@ startBtn.addEventListener("click", () => {
   }
 
   glowLoop();
+}
+
+function triggerAvatarAction(action) {
+  const avatar = document.querySelector(".avatar-wrapper");
+
+  avatar.classList.remove("pose", "dance", "shine"); // remove previous
+  void avatar.offsetWidth; // reset animation
+
+  avatar.classList.add(action); // add new
 }
 
