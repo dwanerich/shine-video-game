@@ -43,17 +43,24 @@ body {
 }
 
 .avatar-wrapper {
-  position: relative;
   width: 320px;
   height: 480px;
-  background: #1a1a1a;
-  border-radius: 30px;
-  border: 3px solid #ff2aad;
-  box-shadow: 0 0 20px #ff2aad55;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #111;
+  border-radius: 20px;
+  box-shadow: 0 0 20px #ff2aad55;
+  overflow: hidden;
 }
+
+.avatar-static {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 20px;
+}
+
 
 .layer {
   position: absolute;
