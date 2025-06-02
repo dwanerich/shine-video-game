@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   background: #0a0a0a;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   color: white;
   display: flex;
   justify-content: center;
@@ -15,71 +15,84 @@ body {
   width: 100%;
   max-width: 500px;
   padding: 20px;
+  position: relative;
 }
 
 .top-bar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
   gap: 10px;
-  margin-bottom: 10px;
+  z-index: 10;
 }
 
 .xp-box {
   background: #ff6a00;
-  padding: 8px 16px;
+  padding: 6px 12px;
   font-weight: bold;
   border-radius: 8px;
+  font-size: 14px;
 }
 
 .player-name {
   background: #111;
-  padding: 8px 16px;
+  padding: 6px 12px;
   border-radius: 8px;
   font-weight: 600;
+  font-size: 14px;
 }
 
 .shine-title {
   font-size: 48px;
   font-weight: 900;
   letter-spacing: 2px;
-  margin-bottom: 20px;
+  margin: 80px 0 10px;
 }
 
 .avatar-wrapper {
-  position: relative;
-  width: 200px;
   margin: 0 auto 30px;
 }
 
 .avatar {
-  width: 100%;
+  width: 240px;
   border-radius: 50%;
-  border: 4px solid #ff6a00;
+  border: 6px solid #ff6a00;
   box-shadow: 0 0 40px #ff6a00;
 }
 
-.button-grid {
+.menu-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 20px 16px;
+  justify-items: center;
   margin-top: 20px;
 }
 
 .menu-btn {
-  padding: 16px;
-  background: black;
+  background: #000;
   border: 2px solid #ff6a00;
   color: white;
   font-size: 20px;
   font-weight: bold;
-  border-radius: 12px;
+  padding: 16px 24px;
+  width: 140px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px #ff6a00;
+  transition: 0.2s ease;
   cursor: pointer;
-  transition: all 0.2s ease;
 }
 
 .menu-btn:hover {
   background: #ff6a00;
   color: black;
-  box-shadow: 0 0 12px #ff6a00;
+  box-shadow: 0 0 16px #ff6a00;
+}
+
+.left {
+  justify-self: end;
+}
+
+.right {
+  justify-self: start;
 }
