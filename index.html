@@ -1,110 +1,175 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#111111" />
-  <title>Shine Mode | YATPAG Game</title>
+<!-- PERFORMANCE MODE UI - REFACTORED TO MATCH VISUAL MOCKUP -->
+<section class="performance-mode" id="performance">
+  <h2 class="mode-title">PERFORMANCE MODE</h2>
 
-  <link rel="stylesheet" href="css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700;900&display=swap" rel="stylesheet" />
-</head>
-<body>
-
-  <div class="top-avatar">
-  <img src="/assets/avatar-silhouette.png" alt="Shine Mode Avatar" />
-</div>
-
-  <!-- 🎨 AVATAR CUSTOMIZATION -->
-  <section class="avatar-customization">
-    <h2>Create Your Dancer</h2>
-    <div class="avatar-preview">
-      <img id="skinLayer" src="/assets/skin-medium.png" class="avatar-layer" />
-      <img id="hairLayer" src="/assets/hair-bun.png" class="avatar-layer" />
-      <img id="outfitLayer" src="/assets/outfit-stage.png" class="avatar-layer" />
-      <img id="auraLayer" src="/assets/aura-gold.png" class="avatar-layer aura" />
-    </div>
-
-    <div class="controls">
-      <label>Skin Tone:</label>
-      <select id="skinSelect">
-        <option value="light">Light</option>
-        <option value="medium" selected>Medium</option>
-        <option value="dark">Dark</option>
-      </select>
-
-      <label>Hair:</label>
-      <select id="hairSelect">
-        <option value="afro">Afro Puff</option>
-        <option value="braids">Braids</option>
-        <option value="bun" selected>Bun</option>
-        <option value="curls">Curls</option>
-      </select>
-
-      <label>Outfit:</label>
-      <select id="outfitSelect">
-        <option value="practice">Practice Fit</option>
-        <option value="stage" selected>Stage Costume</option>
-      </select>
-
-      <label>Aura:</label>
-      <select id="auraSelect">
-        <option value="none">None</option>
-        <option value="gold" selected>Gold Sparkle</option>
-        <!-- Pink aura added via JS if unlocked -->
-      </select>
-    </div>
-  </section>
-
-  <!-- 🗺️ LEVEL SELECT -->
-  <section id="levelSelect" class="level-select">
-    <h2>Select Your Stage</h2>
-    <div class="level-grid">
-      <button class="level-btn" data-stage="practice">Practice Studio</button>
-      <button class="level-btn" data-stage="talent">Talent Show</button>
-      <button class="level-btn" data-stage="nba">NBA Halftime</button>
-      <button class="level-btn locked" data-stage="finals" disabled>Shine Finals 🔒</button>
-    </div>
-  </section>
-
-  <!-- 🕹️ PERFORMANCE MODE -->
-  <section class="performance-mode" id="performance" style="display: none;">
-    <h2 class="performance-title">Shine Performance</h2>
-
-    <div class="stage">
-      <div class="note-track" id="track1"></div>
-      <div class="note-track" id="track2"></div>
-      <div class="note-track" id="track3"></div>
-      <div class="note-track" id="track4"></div>
-    </div>
-
-    <div class="input-bar">
-      <div class="tap-zone" data-track="1"></div>
-      <div class="tap-zone" data-track="2"></div>
-      <div class="tap-zone" data-track="3"></div>
-      <div class="tap-zone" data-track="4"></div>
-    </div>
-
-    <button id="startButton">Start Performance</button>
-
-    <div class="feedback" id="feedback">Ready?</div>
-    <div class="score" id="score">Score: 0</div>
-
-    <div class="performance-complete" id="performanceComplete" style="display: none;">
-      <h3>Performance Complete!</h3>
-      <p id="finalScoreText">Your score: 0</p>
-      <div class="unlock-message" id="unlockMessage" style="display: none;">
-        <p>🔥 You unlocked: <strong id="unlockedItemName">Pink Aura</strong>!</p>
+  <div class="customizer-grid">
+    <!-- LEFT CONTROLS -->
+    <div class="customizer-controls left">
+      <div class="control-item">
+        <label>SKIN TONE</label>
+        <div class="cycle-buttons">
+          <button class="arrow-btn" data-category="skin" data-direction="prev">❮</button>
+          <div id="skinPreview" class="preview-circle"></div>
+          <button class="arrow-btn" data-category="skin" data-direction="next">❯</button>
+        </div>
       </div>
-      <button id="replayButton">Replay</button>
+
+      <div class="control-item">
+        <label>OUTFIT</label>
+        <div class="cycle-buttons">
+          <button class="arrow-btn" data-category="outfit" data-direction="prev">❮</button>
+          <div id="outfitPreview" class="preview-circle"></div>
+          <button class="arrow-btn" data-category="outfit" data-direction="next">❯</button>
+        </div>
+      </div>
     </div>
-  </section>
 
-  <!-- 🎵 Audio Track -->
-  <audio id="gameTrack" src="/assets/track1.mp3" preload="auto"></audio>
+    <!-- AVATAR DISPLAY -->
+    <div class="avatar-wrapper">
+      <img src="/assets/avatar-mockup.png" alt="Dancer Avatar" class="main-avatar" />
+    </div>
 
-  <!-- 💻 Scripts -->
-  <script src="js/avatar.js"></script>
-  <script src="js/rhythm.js"></script>
-</body>
-</html>
+    <!-- RIGHT CONTROLS -->
+    <div class="customizer-controls right">
+      <div class="control-item">
+        <label>HAIRSTYLE</label>
+        <div class="cycle-buttons">
+          <button class="arrow-btn" data-category="hair" data-direction="prev">❮</button>
+          <div id="hairPreview" class="preview-circle"></div>
+          <button class="arrow-btn" data-category="hair" data-direction="next">❯</button>
+        </div>
+      </div>
+
+      <div class="control-item">
+        <label>AURA</label>
+        <div class="cycle-buttons">
+          <button class="arrow-btn" data-category="aura" data-direction="prev">❮</button>
+          <div id="auraPreview" class="preview-circle"></div>
+          <button class="arrow-btn" data-category="aura" data-direction="next">❯</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button id="startButton" class="start-performance">BEGIN PERFORMANCE</button>
+</section>
+
+<style>
+.performance-mode {
+  padding: 80px 20px;
+  background: radial-gradient(circle, #1a1a1a, #000);
+  color: white;
+  text-align: center;
+}
+
+.mode-title {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #ff2aad;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.customizer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.customizer-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex: 1;
+  min-width: 200px;
+  max-width: 220px;
+}
+
+.control-item label {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #00ffd5;
+}
+
+.cycle-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.arrow-btn {
+  background: #ff2aad;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.arrow-btn:hover {
+  background: #e42094;
+}
+
+.preview-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #333;
+  box-shadow: 0 0 8px #00ffd580;
+}
+
+.avatar-wrapper {
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-avatar {
+  width: 240px;
+  height: auto;
+  filter: drop-shadow(0 0 10px #ff2aad);
+  border-radius: 20px;
+  transition: transform 0.4s ease;
+}
+
+.main-avatar:hover {
+  transform: scale(1.05);
+}
+
+.start-performance {
+  margin-top: 40px;
+  padding: 16px 40px;
+  font-size: 1.2rem;
+  background: #00ff90;
+  color: #111;
+  font-weight: 900;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.start-performance:hover {
+  background: #00cc74;
+}
+
+@media (max-width: 768px) {
+  .customizer-grid {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .avatar-wrapper {
+    order: -1;
+  }
+}
+</style>
