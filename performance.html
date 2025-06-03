@@ -23,15 +23,15 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-evenly;
-      height: calc(100dvh - 80px);
+      justify-content: space-between;
+      height: calc(100dvh - 60px);
       width: 100%;
-      padding: 16px 20px 100px;
+      padding: 16px 20px 10px;
       box-sizing: border-box;
     }
 
     .avatar-display img {
-      max-height: 35vh;
+      max-height: 30vh;
       width: auto;
       border-radius: 50%;
       box-shadow: 0 0 40px rgba(255, 60, 172, 0.6);
@@ -61,17 +61,34 @@
       color: #ff3cac;
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
     }
 
-    .arrow-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 14px rgba(255, 60, 172, 0.5);
+    .arrow-btn:active::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 120%;
+      height: 120%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: rgba(255, 60, 172, 0.2);
+      animation: pop 0.4s ease-out;
+      pointer-events: none;
+    }
+
+    @keyframes pop {
+      from { transform: translate(-50%, -50%) scale(0.8); opacity: 1; }
+      to { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
     }
 
     .status-bar {
-      font-size: 1rem;
+      font-size: 1.2rem;
       color: #ccc;
-      margin-top: 10px;
+      margin-top: 12px;
+      padding-bottom: 8px;
+      z-index: 1001;
     }
 
     .bottom-nav {
@@ -109,6 +126,21 @@
       margin-bottom: 2px;
       text-shadow: 0 0 6px rgba(255, 60, 172, 0.7);
     }
+
+    #end-screen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      color: white;
+      text-align: center;
+    }
+
+    #end-screen img {
+      max-width: 240px;
+      margin: 20px 0;
+    }
   </style>
 </head>
 <body>
@@ -117,6 +149,8 @@
     <div class="avatar-display">
       <img src="assets/avatar.png" alt="Your Avatar">
     </div>
+
+    <div id="streak-indicator">🔥 STREAK!</div>
 
     <div class="prompt-sequence" id="prompt">↑</div>
 
@@ -128,6 +162,14 @@
     </div>
 
     <div class="status-bar" id="status">Score: 0</div>
+
+    <div id="end-screen">
+      <h2>Game Over!</h2>
+      <p id="final-score"></p>
+      <img id="unlocked-card" src="" alt="Unlocked Card" />
+      <button onclick="location.reload()">Play Again</button>
+      <button onclick="window.location.href='collectibles.html'">Go to Collection</button>
+    </div>
   </div>
 
   <nav class="bottom-nav">
@@ -140,11 +182,25 @@
 
   <script>
     let score = 0;
+    let streak = 0;
+    let promptsShown = 0;
+    const maxPrompts = 10;
     const promptEl = document.getElementById('prompt');
     const statusEl = document.getElementById('status');
     const directions = ['left', 'up', 'down', 'right'];
     const symbols = { left: '←', up: '↑', down: '↓', right: '→' };
     let current = 'up';
+    const endScreen = document.getElementById('end-screen');
+    const finalScore = document.getElementById('final-score');
+    const unlockedCard = document.getElementById('unlocked-card');
+
+    const cardList = [
+      'assets/first.png',
+      'assets/second.png',
+      'assets/third.png',
+      'assets/fourth.png',
+      'assets/fifth.png'
+    ];
 
     function randomPrompt() {
       current = directions[Math.floor(Math.random() * directions.length)];
@@ -153,12 +209,16 @@
 
     function handleInput(dir) {
       if (dir === current) {
-        score++;
-        statusEl.textContent = `Score: ${score}`;
-        randomPrompt();
+        streak++;
+        const bonus = streak >= 5 ? 2 : 1;
+        score += bonus;
+        statusEl.textContent = `✅ Good! Score: ${score} (Streak: ${streak})`;
       } else {
+        streak = 0;
         statusEl.textContent = `❌ Miss! Score: ${score}`;
       }
+      clearTimeout(timeoutId);
+      nextPrompt();
     }
 
     document.querySelectorAll('.arrow-btn').forEach(btn => {
@@ -179,7 +239,63 @@
       }
     });
 
-    randomPrompt();
+    let timeoutId;
+    function nextPrompt() {
+      promptsShown++;
+      if (promptsShown > maxPrompts) {
+        showEndScreen();
+        return;
+      }
+      timeoutId = setTimeout(() => {
+        streak = 0;
+        statusEl.textContent = `❌ Miss! Score: ${score}`;
+        nextPrompt();
+      }, 3000);
+      randomPrompt();
+    }
+
+    function showEndScreen() {
+      document.getElementById('game-container').style.display = 'none';
+      endScreen.style.display = 'flex';
+      finalScore.textContent = `Final Score: ${score}`;
+      const card = cardList[Math.floor(Math.random() * cardList.length)];
+      unlockedCard.src = card;
+      let unlocked = JSON.parse(localStorage.getItem('cards')) || [];
+      if (!unlocked.includes(card)) {
+      unlocked.push(card);
+}
+localStorage.setItem('cards', JSON.stringify(unlocked));
+
+    }
+
+    nextPrompt();
+
+    const bgMusic = document.getElementById('bg-music');
+    const hitSound = document.getElementById('hit-sound');
+
+function handleInput(dir) {
+  if (streak === 5) {
+  const indicator = document.getElementById('streak-indicator');
+  indicator.style.animation = 'none'; // reset
+  void indicator.offsetWidth; // trigger reflow
+  indicator.style.animation = 'streakPulse 1s ease-out forwards';
+}
+  if (dir === current) {
+    playHitSound();
+    streak++;
+    const bonus = streak >= 5 ? 2 : 1;
+    score += bonus;
+    statusEl.textContent = `✅ Good! Score: ${score} (Streak: ${streak})`;
+  } else {
+    streak = 0;
+    statusEl.textContent = `❌ Miss! Score: ${score}`;
+  }
+  clearTimeout(timeoutId);
+  nextPrompt();
+
+}
   </script>
+    <audio id="bg-music" src="assets/music.mp3" loop autoplay></audio>
+    <audio id="hit-sound" src="assets/hit.mp3"></audio>
 </body>
 </html>

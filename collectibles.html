@@ -108,5 +108,27 @@
     <a href="collectibles.html" class="nav-item"><span>🃏</span>Cards</a>
     <a href="customization.html" class="nav-item"><span>⚙️</span>Customize</a>
   </nav>
+
+  <h1>Your Collection</h1>
+<div id="collection" style="display: flex; flex-wrap: wrap; gap: 16px;"></div>
+
+<script>
+  const cards = JSON.parse(localStorage.getItem('cards')) || [];
+  const container = document.getElementById('collection');
+
+  if (cards.length === 0) {
+    container.innerHTML = "<p>You haven’t unlocked any cards yet. Play to earn them!</p>";
+  } else {
+    cards.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.style.width = "160px";
+      img.style.borderRadius = "12px";
+      img.style.boxShadow = "0 0 12px rgba(255, 60, 172, 0.4)";
+      container.appendChild(img);
+    });
+  }
+</script>
+
 </body>
 </html>
