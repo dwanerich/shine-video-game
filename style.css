@@ -4,37 +4,43 @@
   box-sizing: border-box;
 }
 body, html {
+  width: 100%;
   height: 100%;
-  background: black;
-  font-family: sans-serif;
+  background: #000;
+  font-family: 'Arial', sans-serif;
 }
-.background-container {
+.home-screen {
   position: relative;
   width: 100%;
   height: 100vh;
   overflow: hidden;
 }
-.background-image {
+.home-bg {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
-.invisible-button-grid {
+.hitboxes {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
 }
-.button-zone {
+.btn {
   position: absolute;
-  width: 30%;
-  height: 7%;
-  left: 35%;
-  background: rgba(255,255,255,0); /* Fully transparent */
+  width: 250px;
+  height: 55px;
+  left: 50%;
+  transform: translateX(-50%);
 }
-#story-mode { top: 50%; }
-#perform { top: 58%; }
-#customize { top: 66%; }
-#collect { top: 74%; }
-#big-steppa { top: 82%; }
+.play {
+  top: 64%;
+}
+.story {
+  top: 72%;
+}
+.settings {
+  top: 80%;
+}
