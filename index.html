@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SHINE MODE - Story Mode</title>
+  <title>SHINE MODE - Customization</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
@@ -16,87 +16,47 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
+      justify-content: center;
+      text-align: center;
+      height: 100vh;
       padding: 2rem;
     }
 
-    .story-title {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .scene-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
+    .avatar-custom {
+      width: 240px;
+      border-radius: 50%;
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
       margin-bottom: 2rem;
     }
 
-    .scene-card {
-      background: url('assets/nyc-bg.png') center/cover;
-      width: 280px;
-      height: 160px;
-      border-radius: 16px;
-      box-shadow: 0 8px 30px rgba(255, 60, 172, 0.4);
-      display: flex;
-      align-items: flex-end;
-      padding: 1rem;
-      position: relative;
-      overflow: hidden;
+    .custom-msg {
+      font-size: 1.4rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
     }
 
-    .scene-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
-    }
-
-    .scene-label {
-      position: relative;
-      font-size: 1.1rem;
+    .continue-button {
+      padding: 1rem 2rem;
+      font-size: 1rem;
       font-weight: bold;
-      z-index: 1;
-    }
-
-    .story-buttons {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .story-button {
-      padding: 0.8rem 1.6rem;
-      border-radius: 25px;
-      background: linear-gradient(135deg, #ff3cac, #784ba0);
+      border-radius: 30px;
+      background: linear-gradient(135deg, #ff3cac, #562b7c);
       border: none;
       color: white;
-      font-weight: 600;
       text-transform: uppercase;
       cursor: pointer;
       transition: all 0.3s ease;
     }
 
-    .story-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(255, 60, 172, 0.5);
+    .continue-button:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(255, 60, 172, 0.4);
     }
   </style>
 </head>
 <body>
-  <div class="story-title">SHINE BEGINS HERE</div>
-  <div class="scene-grid">
-    <div class="scene-card"><div class="scene-label">Origin: The First Stage</div></div>
-    <div class="scene-card"><div class="scene-label">City Streets: Prove Your Light</div></div>
-    <div class="scene-card"><div class="scene-label">Spotlight Dreams: Rise to the Top</div></div>
-  </div>
-  <div class="story-buttons">
-    <button class="story-button">Continue</button>
-    <button class="story-button">Choose Scene</button>
-    <button class="story-button">Skip Intro</button>
-  </div>
+  <img src="assets/avatar.png" alt="Avatar" class="avatar-custom" />
+  <div class="custom-msg">Customization features are coming soon. Your avatar is already shining — more styles coming in the next update.</div>
+  <button class="continue-button">Continue</button>
 </body>
 </html>
