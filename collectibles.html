@@ -3,70 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SHINE MODE - Performance</title>
+  <title>SHINE MODE - Collectibles</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
 
     body {
       margin: 0;
-      background: radial-gradient(circle at center, #0a0a0a, #000);
+      background: #0a0a0a;
       font-family: 'Orbitron', sans-serif;
       color: white;
+      padding-bottom: 90px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding-bottom: 100px;
-      height: 100vh;
     }
 
-    .performance-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    .avatar-wrapper {
-      background-image: url('assets/nyc-bg.jpg');
-      background-size: cover;
-      background-position: center;
-      padding: 1rem;
-      border-radius: 50%;
-      box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
-    }
-
-    .avatar-performance {
-      width: 260px;
-      border-radius: 50%;
-      display: block;
-    }
-
-    .button-grid {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .perf-button {
-      padding: 1rem 2rem;
-      border: none;
-      border-radius: 30px;
-      background: linear-gradient(135deg, #ff3cac, #562b7c);
-      color: white;
-      font-size: 1rem;
-      font-weight: bold;
+    .collectibles-title {
+      font-size: 2rem;
+      margin: 2rem 0 1rem;
       text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 25px rgba(255, 60, 172, 0.4);
+      letter-spacing: 1px;
     }
 
-    .perf-button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 40px rgba(255, 60, 172, 0.6);
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      width: 90%;
+      max-width: 1000px;
+      padding-bottom: 2rem;
+    }
+
+    .collectible-card {
+      background: #111;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(255, 0, 128, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .collectible-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 40px rgba(255, 0, 128, 0.6);
+    }
+
+    .collectible-card img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     .bottom-nav {
@@ -107,16 +92,13 @@
   </style>
 </head>
 <body>
-  <div class="performance-container">
-    <div class="avatar-wrapper">
-      <img src="assets/avatar.png" alt="Avatar" class="avatar-performance" />
-    </div>
-    <div class="button-grid">
-      <button class="perf-button">Start</button>
-      <button class="perf-button">Freestyle</button>
-      <button class="perf-button">Record</button>
-      <button class="perf-button">Exit</button>
-    </div>
+  <div class="collectibles-title">Your Shine Collection</div>
+  <div class="card-grid">
+    <div class="collectible-card"><img src="assets/first.png" alt="Entry Level Shine" /></div>
+    <div class="collectible-card"><img src="assets/crew.png" alt="Crew Support" /></div>
+    <div class="collectible-card"><img src="assets/spotlight.png" alt="Spotlight Access" /></div>
+    <div class="collectible-card"><img src="assets/pro.png" alt="Pro Player" /></div>
+    <div class="collectible-card"><img src="assets/last.png" alt="Big Steppa" /></div>
   </div>
 
   <nav class="bottom-nav">

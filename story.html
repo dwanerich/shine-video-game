@@ -3,70 +3,92 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SHINE MODE - Performance</title>
+  <title>SHINE MODE - Story Mode</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
 
     body {
       margin: 0;
-      background: radial-gradient(circle at center, #0a0a0a, #000);
+      background: #0a0a0a;
       font-family: 'Orbitron', sans-serif;
       color: white;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      padding: 2rem;
       padding-bottom: 100px;
-      height: 100vh;
+      min-height: 100vh;
     }
 
-    .performance-container {
+    .story-title {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+    }
+
+    .scene-grid {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    .avatar-wrapper {
-      background-image: url('assets/nyc-bg.jpg');
-      background-size: cover;
-      background-position: center;
-      padding: 1rem;
-      border-radius: 50%;
-      box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
-    }
-
-    .avatar-performance {
-      width: 260px;
-      border-radius: 50%;
-      display: block;
-    }
-
-    .button-grid {
-      display: flex;
+      flex-wrap: wrap;
       gap: 1.5rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .scene-card {
+      background: url('assets/nyc-bg.jpg') center/cover no-repeat;
+      width: 280px;
+      height: 160px;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(255, 60, 172, 0.4);
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .scene-card:hover {
+      transform: scale(1.03);
+    }
+
+    .scene-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
+    }
+
+    .scene-label {
+      position: relative;
+      font-size: 1.1rem;
+      font-weight: bold;
+      z-index: 1;
+    }
+
+    .story-buttons {
+      display: flex;
+      gap: 1.2rem;
       flex-wrap: wrap;
       justify-content: center;
     }
 
-    .perf-button {
-      padding: 1rem 2rem;
+    .story-button {
+      padding: 0.9rem 1.8rem;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #ff3cac, #784ba0);
       border: none;
-      border-radius: 30px;
-      background: linear-gradient(135deg, #ff3cac, #562b7c);
       color: white;
-      font-size: 1rem;
-      font-weight: bold;
+      font-weight: 600;
       text-transform: uppercase;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 5px 25px rgba(255, 60, 172, 0.4);
     }
 
-    .perf-button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 40px rgba(255, 60, 172, 0.6);
+    .story-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 60, 172, 0.5);
     }
 
     .bottom-nav {
@@ -107,16 +129,17 @@
   </style>
 </head>
 <body>
-  <div class="performance-container">
-    <div class="avatar-wrapper">
-      <img src="assets/avatar.png" alt="Avatar" class="avatar-performance" />
-    </div>
-    <div class="button-grid">
-      <button class="perf-button">Start</button>
-      <button class="perf-button">Freestyle</button>
-      <button class="perf-button">Record</button>
-      <button class="perf-button">Exit</button>
-    </div>
+  <div class="story-title">SHINE BEGINS HERE</div>
+  <div class="scene-grid">
+    <div class="scene-card"><div class="scene-label">Origin: The First Stage</div></div>
+    <div class="scene-card"><div class="scene-label">City Streets: Prove Your Light</div></div>
+    <div class="scene-card"><div class="scene-label">Spotlight Dreams: Rise to the Top</div></div>
+  </div>
+
+  <div class="story-buttons">
+    <button class="story-button">Continue</button>
+    <button class="story-button">Choose Scene</button>
+    <button class="story-button">Skip Intro</button>
   </div>
 
   <nav class="bottom-nav">
