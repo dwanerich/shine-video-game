@@ -2,73 +2,82 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SHINE MODE - Performance</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SHINE MODE – Perform</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
 
-    body {
+    html, body {
       margin: 0;
-      background: radial-gradient(circle at center, #0a0a0a, #000);
+      padding: 0;
+      height: 100%;
+      width: 100%;
       font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(180deg, #0a0a0a, #1a1a1a);
       color: white;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding-bottom: 100px;
-      height: 100vh;
+      overflow: hidden;
     }
 
-    .performance-container {
+    #game-container {
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       gap: 2rem;
+      width: 100%;
+      height: 100%;
+      padding-bottom: 80px;
     }
 
-    .avatar-wrapper {
-      width: 360px;
-      height: 540px;
+    .avatar-display img {
+      width: 240px;
+      border-radius: 50%;
+      box-shadow: 0 0 40px rgba(255, 60, 172, 0.6);
       background-image: url('assets/nyc-bg.png');
-      background-size: cover;
-      background-position: center;
-      padding: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+
     }
 
-    .avatar-performance {
-      width: 260px;
-      border-radius: 12px;
-      display: block;
+    .prompt-sequence {
+      font-size: 3rem;
+      color: #ff3cac;
+      text-shadow: 0 0 10px rgba(255, 60, 172, 0.8);
     }
 
-    .button-grid {
+    .arrow-controls {
       display: flex;
-      gap: 1.5rem;
       flex-wrap: wrap;
       justify-content: center;
+      gap: 2.5rem;
+      margin-top: 20px;
     }
 
-    .perf-button {
-      padding: 1rem 2rem;
-      border: none;
-      border-radius: 30px;
-      background: linear-gradient(135deg, #ff3cac, #562b7c);
-      color: white;
-      font-size: 1rem;
-      font-weight: bold;
-      text-transform: uppercase;
+    .arrow-btn {
+      width: 120px;
+      height: 120px;
+      font-size: 3.5rem;
+      font-family: 'Orbitron', sans-serif;
+      background: transparent;
+      border: 2px solid #ff3cac;
+      border-radius: 50%;
+      color: #ff3cac;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 25px rgba(255, 60, 172, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .perf-button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 40px rgba(255, 60, 172, 0.6);
+    .arrow-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 14px rgba(255, 60, 172, 0.5);
+    }
+
+    .status-bar {
+      font-size: 1rem;
+      color: #ccc;
+      margin-top: 10px;
     }
 
     .bottom-nav {
@@ -109,16 +118,22 @@
   </style>
 </head>
 <body>
-  <div class="performance-container">
-    <div class="avatar-wrapper">
-      <img src="assets/avatar.png" alt="Avatar" class="avatar-performance" />
+
+  <div id="game-container">
+    <div class="avatar-display">
+      <img src="assets/avatar.png" alt="Your Avatar">
     </div>
-    <div class="button-grid">
-      <button class="perf-button">Start</button>
-      <button class="perf-button">Freestyle</button>
-      <button class="perf-button">Record</button>
-      <button class="perf-button">Exit</button>
+
+    <div class="prompt-sequence" id="prompt">↑</div>
+
+    <div class="arrow-controls">
+      <button class="arrow-btn" data-dir="left">←</button>
+      <button class="arrow-btn" data-dir="up">↑</button>
+      <button class="arrow-btn" data-dir="down">↓</button>
+      <button class="arrow-btn" data-dir="right">→</button>
     </div>
+
+    <div class="status-bar" id="status">Score: 0</div>
   </div>
 
   <nav class="bottom-nav">
@@ -128,5 +143,49 @@
     <a href="collectibles.html" class="nav-item"><span>🃏</span>Cards</a>
     <a href="customization.html" class="nav-item"><span>⚙️</span>Customize</a>
   </nav>
+
+  <script>
+    let score = 0;
+    const promptEl = document.getElementById('prompt');
+    const statusEl = document.getElementById('status');
+    const directions = ['left', 'up', 'down', 'right'];
+    const symbols = { left: '←', up: '↑', down: '↓', right: '→' };
+    let current = 'up';
+
+    function randomPrompt() {
+      current = directions[Math.floor(Math.random() * directions.length)];
+      promptEl.textContent = symbols[current];
+    }
+
+    function handleInput(dir) {
+      if (dir === current) {
+        score++;
+        statusEl.textContent = `Score: ${score}`;
+        randomPrompt();
+      } else {
+        statusEl.textContent = `❌ Miss! Score: ${score}`;
+      }
+    }
+
+    document.querySelectorAll('.arrow-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        handleInput(btn.dataset.dir);
+      });
+    });
+
+    document.addEventListener('keydown', e => {
+      const keyMap = {
+        ArrowLeft: 'left',
+        ArrowUp: 'up',
+        ArrowDown: 'down',
+        ArrowRight: 'right'
+      };
+      if (keyMap[e.key]) {
+        handleInput(keyMap[e.key]);
+      }
+    });
+
+    randomPrompt();
+  </script>
 </body>
 </html>
