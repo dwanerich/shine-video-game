@@ -1,62 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SHINE MODE - Customization</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHINE MODE - Navigation</title>
+  <link rel="stylesheet" href="style.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
 
     body {
       margin: 0;
-      background: linear-gradient(180deg, #0a0a0a, #1a1a1a);
+      background: #0a0a0a;
       font-family: 'Orbitron', sans-serif;
       color: white;
+      padding-bottom: 70px; /* space for nav */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #111;
+      border-top: 1px solid #333;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0.5rem 0;
+      z-index: 1000;
+    }
+
+    .nav-item {
+      color: white;
+      font-size: 0.75rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      height: 100vh;
-      padding: 2rem;
+      text-decoration: none;
+      transition: color 0.3s;
     }
 
-    .avatar-custom {
-      width: 240px;
-      border-radius: 50%;
-      box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
-      margin-bottom: 2rem;
+    .nav-item:hover {
+      color: #ff3cac;
     }
 
-    .custom-msg {
-      font-size: 1.4rem;
-      margin-bottom: 2rem;
-      max-width: 600px;
-    }
-
-    .continue-button {
-      padding: 1rem 2rem;
-      font-size: 1rem;
-      font-weight: bold;
-      border-radius: 30px;
-      background: linear-gradient(135deg, #ff3cac, #562b7c);
-      border: none;
-      color: white;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .continue-button:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(255, 60, 172, 0.4);
+    .nav-item span {
+      font-size: 1.3rem;
+      margin-bottom: 2px;
     }
   </style>
 </head>
 <body>
-  <img src="assets/avatar.png" alt="Avatar" class="avatar-custom" />
-  <div class="custom-msg">Customization features are coming soon. Your avatar is already shining — more styles coming in the next update.</div>
-  <button class="continue-button">Continue</button>
+
+  <h1 style="text-align:center;">Navigation Preview</h1>
+  <p style="text-align:center;">This bar will appear across all pages for navigation.</p>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-item">
+      <span>🏠</span>
+      Home
+    </a>
+    <a href="story.html" class="nav-item">
+      <span>🎭</span>
+      Story
+    </a>
+    <a href="performance.html" class="nav-item">
+      <span>🎮</span>
+      Perform
+    </a>
+    <a href="collectibles.html" class="nav-item">
+      <span>🃏</span>
+      Cards
+    </a>
+    <a href="customization.html" class="nav-item">
+      <span>⚙️</span>
+      Customize
+    </a>
+  </nav>
+
 </body>
 </html>
