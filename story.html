@@ -36,7 +36,9 @@
     }
 
     .scene-card {
-      background: url('assets/nyc-bg.jpg') center/cover no-repeat;
+      
+      background-size: cover;
+      background-position: center;
       width: 280px;
       height: 160px;
       border-radius: 16px;
@@ -131,9 +133,16 @@
 <body>
   <div class="story-title">SHINE BEGINS HERE</div>
   <div class="scene-grid">
-    <div class="scene-card"><div class="scene-label">Origin: The First Stage</div></div>
-    <div class="scene-card"><div class="scene-label">City Streets: Prove Your Light</div></div>
-    <div class="scene-card"><div class="scene-label">Spotlight Dreams: Rise to the Top</div></div>
+   <div class="scene-card" style="background-image: url('assets/origin-bg.png');">
+  <div class="scene-label">Origin: The First Stage</div>
+</div>
+<div class="scene-card" style="background-image: url('assets/city-bg.png');">
+  <div class="scene-label">City Streets: Prove Your Light</div>
+</div>
+<div class="scene-card" style="background-image: url('assets/spotlight-bg.png');">
+  <div class="scene-label">Spotlight Dreams: Rise to the Top</div>
+</div>
+
   </div>
 
   <div class="story-buttons">
