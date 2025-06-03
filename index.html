@@ -34,14 +34,14 @@
       background-size: cover;
       background-position: center;
       padding: 1rem;
-      border-radius: 12px;
+      border-radius: 50%;
       box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
     }
 
     .avatar-performance {
       width: 280px;
       border-radius: 50%;
-      box-shadow: 0 0 60px rgba(255, 255, 255, 0.1);
+      display: block;
     }
 
     .button-grid {
@@ -73,7 +73,9 @@
 </head>
 <body>
   <div class="performance-container">
-    <img src="assets/avatar.png" alt="Avatar" class="avatar-wrapper" />
+    <div class="avatar-wrapper">
+      <img src="assets/avatar.png" alt="Avatar" class="avatar-performance" />
+    </div>
     <div class="button-grid">
       <button class="perf-button">Start</button>
       <button class="perf-button">Freestyle</button>
