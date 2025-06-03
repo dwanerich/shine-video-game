@@ -2,17 +2,74 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SHINE Mode</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHINE MODE - Performance</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at center, #0a0a0a, #000);
+      font-family: 'Orbitron', sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .performance-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .avatar-performance {
+      width: 280px;
+      border-radius: 50%;
+      box-shadow: 0 0 60px rgba(255, 255, 255, 0.1);
+    }
+
+    .button-grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .perf-button {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #ff3cac, #562b7c);
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 25px rgba(255, 60, 172, 0.4);
+    }
+
+    .perf-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 40px rgba(255, 60, 172, 0.6);
+    }
+  </style>
 </head>
 <body>
-  <div class="home-screen">
-    <img src="assets/shine_home_bg.png" alt="SHINE Home Screen" class="home-bg"/>
-    <div class="hitboxes">
-      <a href="#" class="btn play"></a>
-      <a href="#" class="btn story"></a>
-      <a href="#" class="btn settings"></a>
+  <div class="performance-container">
+    <img src="assets/avatar.png" alt="Avatar" class="avatar-performance" />
+    <div class="button-grid">
+      <button class="perf-button">Start</button>
+      <button class="perf-button">Freestyle</button>
+      <button class="perf-button">Record</button>
+      <button class="perf-button">Exit</button>
     </div>
   </div>
 </body>
