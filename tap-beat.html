@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tap to Beat</title>
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    #beat {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #ff3cac;
+      margin: 40px auto;
+      opacity: 0.2;
+      transition: opacity 0.1s ease;
+    }
+    .pulse {
+      opacity: 1 !important;
+    }
+    #feedback {
+      font-size: 2rem;
+      margin-top: 20px;
+      height: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tap to the Beat</h1>
+  <p>Try to tap in sync with the glowing circle!</p>
+  <div id="beat"></div>
+  <div id="feedback"></div>
+  <audio id="music" src="assets/music.mp3"></audio>
+
+  <script>
+    const bpm = 117.2;
+    const interval = 60000 / bpm;
+    const beat = document.getElementById('beat');
+    const feedback = document.getElementById('feedback');
+    const audio = document.getElementById('music');
+
+    let lastBeatTime = null;
+    let beatInterval;
+
+    function triggerBeat() {
+      lastBeatTime = Date.now();
+      beat.classList.add('pulse');
+      setTimeout(() => beat.classList.remove('pulse'), 100);
+    }
+
+    function startBeatLoop() {
+      audio.play();
+      triggerBeat();
+      beatInterval = setInterval(triggerBeat, interval);
+    }
+
+    document.body.addEventListener('click', () => {
+      const now = Date.now();
+      const diff = Math.abs(now - lastBeatTime);
+
+      if (diff <= 100) {
+        feedback.textContent = '🔥 Perfect';
+        feedback.style.color = '#ff3cac';
+      } else if (diff <= 200) {
+        feedback.textContent = '👍 Good';
+        feedback.style.color = '#ffe600';
+      } else {
+        feedback.textContent = '🙅‍♀️ Miss';
+        feedback.style.color = '#999';
+      }
+    });
+
+    // Start on first user gesture
+    document.body.addEventListener('click', () => {
+      if (audio.paused) {
+        startBeatLoop();
+      }
+    }, { once: true });
+  </script>
+</body>
+</html>
