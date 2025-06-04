@@ -121,3 +121,15 @@ body, html {
   100% { opacity: 0; transform: translateX(-50%) scale(1); }
 }
 
+.nav-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.nav-icon:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+
