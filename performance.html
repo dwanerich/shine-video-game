@@ -7,15 +7,12 @@
   <style>
     body {
       margin: 0;
-      background: radial-gradient(ellipse at center, #000 0%, #0a0a0a 100%);
-      font-family: 'Orbitron', sans-serif;
+      padding: 0;
+      background: #0a0a0a;
       color: white;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding-bottom: 80px;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+      text-align: center;
     }
     #avatar {
       position: absolute;
@@ -56,21 +53,6 @@
       width: 180px;
       display: none;
     }
-      .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: #111;
-      border-top: 1px solid #333;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      padding: 0.7rem 0;
-      z-index: 1000;
-      box-shadow: 0 -4px 20px rgba(255, 60, 172, 0.2);
-    }
-
 
     .nav-item {
       color: white;
@@ -94,35 +76,36 @@
     }
   </style>
 </head>
-<body>
+
   <nav class="bottom-nav">
     <a href="index.html" class="nav-item">
       <!-- <span>🏠</span> -->
-       <span><img src="/assets/icons/home.png" alt="Home" class="nav-icon" /></span>
+       <li><img src="/assets/icons/home.png" alt="Home" class="nav-icon" /></li>
       <!-- Home -->
     </a>
     <a href="story.html" class="nav-item">
-      <span><img src="/assets/icons/story.png" alt="Story" class="nav-icon" /></span>
+      <li><img src="/assets/icons/story.png" alt="Story" class="nav-icon" /></li>
       <!-- <span>🎭</span> -->
       <!-- Story -->
     </a>
     <a href="performance.html" class="nav-item">
-      <span><img src="/assets/icons/perform.png" alt="Perform" class="nav-icon" /></span>
+      <li><img src="/assets/icons/perform.png" alt="Perform" class="nav-icon" /></li>
       <!-- <span>🎮</span> -->
       <!-- Perform -->
     </a>
     <a href="collectibles.html" class="nav-item">
-        <span><img src="/assets/icons/cards.png" alt="Cards" class="nav-icon" /></span>
+        <li><img src="/assets/icons/cards.png" alt="Cards" class="nav-icon" /></li>
 
       <!-- <span>🃏</span> -->
       <!-- Cards -->
     </a>
     <a href="customization.html" class="nav-item">
-      <span><img src="/assets/icons/customize.png" alt="Customize" class="nav-icon" /></span>
+      <li><img src="/assets/icons/customize.png" alt="Customize" class="nav-icon" /></li>
       <!-- <span>⚙️</span> -->
       <!-- Customize -->
     </a>
   </nav>
+<body>
   <audio id="bg-music" src="assets/music.mp3" preload="auto"></audio>
 
   <img id="avatar" src="assets/avatar.png" alt="avatar">
@@ -221,6 +204,7 @@ function unlockCard() {
 if (streak >= 5) {
   unlockCard();
 }
+
   </script>
 </body>
 </html>
