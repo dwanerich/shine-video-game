@@ -53,8 +53,58 @@
       width: 180px;
       display: none;
     }
+
+    .nav-item {
+      color: white;
+      font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .nav-item:hover {
+      transform: translateY(-4px) scale(1.1);
+      color: #ff3cac;
+    }
+
+    .nav-item span {
+      font-size: 1.6rem;
+      margin-bottom: 2px;
+      text-shadow: 0 0 6px rgba(255, 60, 172, 0.7);
+    }
   </style>
 </head>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-item">
+      <!-- <span>🏠</span> -->
+       <span><img src="/assets/icons/home.png" alt="Home" class="nav-icon" /></span>
+      <!-- Home -->
+    </a>
+    <a href="story.html" class="nav-item">
+      <span><img src="/assets/icons/story.png" alt="Story" class="nav-icon" /></span>
+      <!-- <span>🎭</span> -->
+      <!-- Story -->
+    </a>
+    <a href="performance.html" class="nav-item">
+      <span><img src="/assets/icons/perform.png" alt="Perform" class="nav-icon" /></span>
+      <!-- <span>🎮</span> -->
+      <!-- Perform -->
+    </a>
+    <a href="collectibles.html" class="nav-item">
+        <span><img src="/assets/icons/cards.png" alt="Cards" class="nav-icon" /></span>
+
+      <!-- <span>🃏</span> -->
+      <!-- Cards -->
+    </a>
+    <a href="customization.html" class="nav-item">
+      <span><img src="/assets/icons/customize.png" alt="Customize" class="nav-icon" /></span>
+      <!-- <span>⚙️</span> -->
+      <!-- Customize -->
+    </a>
+  </nav>
 <body>
   <audio id="bg-music" src="assets/music.mp3" preload="auto"></audio>
 
