@@ -131,6 +131,30 @@
   card.style.display = 'block';
 }
 
+const cardList = [
+  'assets/entry-level.png',
+  'assets/origin.png',
+  'assets/crew-support.png',
+  'assets/spotlight.png',
+  'assets/big-steppa.png'
+];
+
+function unlockCard() {
+  const randomCard = cardList[Math.floor(Math.random() * cardList.length)];
+  card.src = randomCard;
+  card.style.display = 'block';
+
+  const unlocked = JSON.parse(localStorage.getItem('unlockedCards') || '[]');
+  if (!unlocked.includes(randomCard)) {
+    unlocked.push(randomCard);
+    localStorage.setItem('unlockedCards', JSON.stringify(unlocked));
+  }
+}
+
+if (streak >= 5) {
+  unlockCard();
+}
+
   </script>
 </body>
 </html>
